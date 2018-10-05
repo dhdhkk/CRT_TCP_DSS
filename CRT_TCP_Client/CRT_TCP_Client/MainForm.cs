@@ -69,14 +69,24 @@ namespace CRT_TCP_Client
            
             int length;
             byte[] outbuf = new byte[1024];
-
+           
             string fileName = @"C:\WHELMON\CMDB\out.txt";
 
             FileStream fis = new FileStream(fileName, FileMode.Create);
 
+            bool isFirst = true;
             while ((length = stream.Read(outbuf, 0, outbuf.Length)) > 0)
             {
-                fis.Write(outbuf, 0, length);
+                if(isFirst)
+                {
+                    fis.Write(outbuf, 6, length - 6);
+                    isFirst = false;
+                }
+                else
+                {
+                    fis.Write(outbuf, 0, length);
+                }
+                
             }
 
             fis.Close();
