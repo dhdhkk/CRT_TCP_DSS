@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using System.IO;
 
+// 10월 5일
 namespace CRT_TCP_Client
 {
     public partial class MainForm : Form
